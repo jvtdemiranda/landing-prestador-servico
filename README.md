@@ -5,10 +5,20 @@ serviço local, com captação de lead via WhatsApp — o formato mais
 recorrente que encontrei numa pesquisa real de vagas no Workana e no
 99Freelas (ver `## Por que esse nicho` abaixo).
 
+**Publicado em [landing-prestador-servico.vercel.app](https://landing-prestador-servico.vercel.app)**
+— atualiza sozinho a cada push na `main`.
+
 <p align="center">
   <img src="docs/screenshot-hero.png" width="66%" alt="Seção principal da landing page, com o CTA de WhatsApp e a ilustração do ar-condicionado">
   <img src="docs/screenshot-calculadora.png" width="30%" alt="Calculadora de BTUs no celular, com resultado calculado e botão para pedir orçamento no WhatsApp">
 </p>
+
+> **Em resumo (pra quem não é da área técnica):** este é o site
+> (landing page) de uma empresa fictícia de ar-condicionado, pensado
+> pra transformar visitante em cliente — o botão de WhatsApp fica
+> sempre visível, e tem até uma calculadora que já sugere quantos BTUs
+> o cliente precisa antes de pedir orçamento. Funciona bem no celular,
+> que é como a maioria das pessoas acessa.
 
 ## O cenário simulado
 
@@ -86,9 +96,8 @@ landing-prestador-servico/
 ## Como rodar
 
 Sem instalação nem servidor — é só abrir `index.html` no navegador, ou
-publicar a pasta inteira em qualquer host de arquivo estático. Publicado
-em [landing-prestador-servico.vercel.app](https://landing-prestador-servico.vercel.app),
-via deploy automático a cada push na `main`.
+publicar a pasta inteira em qualquer host de arquivo estático (é assim
+que o link publicado no topo deste README funciona).
 
 ## Stack
 
