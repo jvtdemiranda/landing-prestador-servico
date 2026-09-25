@@ -86,8 +86,9 @@ landing-prestador-servico/
 ## Como rodar
 
 Sem instalação nem servidor — é só abrir `index.html` no navegador, ou
-publicar a pasta inteira em qualquer host de arquivo estático (é assim
-que está publicado, ver README do portfólio na raiz do repositório).
+publicar a pasta inteira em qualquer host de arquivo estático. Publicado
+em [landing-prestador-servico.vercel.app](https://landing-prestador-servico.vercel.app),
+via deploy automático a cada push na `main`.
 
 ## Stack
 
