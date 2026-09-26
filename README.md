@@ -43,9 +43,10 @@ identificar o padrão mais recorrente de pedido de landing page/site:
   direto. É o mais versátil: serve pra qualquer prestador (eletricista,
   encanador, personal trainer, clínica pequena), não só climatização.
 - Também identifiquei **advocacia** e **produto/e-commerce (tráfego
-  pago)** como nichos fortes — ficam como próximos projetos do
-  portfólio, cada um com seu próprio ângulo (compliance OAB pra
-  advocacia; foco em conversão de campanha pro e-commerce).
+  pago)** como nichos fortes — viraram projetos próprios do portfólio,
+  cada um com seu ângulo: [página de venda pra tráfego pago](https://github.com/jvtdemiranda/landing-produto-trafego-pago)
+  (foco em conversão de campanha) e [site de advocacia trabalhista](https://github.com/jvtdemiranda/landing-advocacia-trabalhista)
+  (regras de publicidade da OAB).
 
 ## Decisões de projeto
 
@@ -60,10 +61,10 @@ identificar o padrão mais recorrente de pedido de landing page/site:
 - **Botão flutuante de WhatsApp** com mensagem pré-definida — várias vagas
   reais pedem exatamente esse padrão de conversão.
 - **Mobile-first**: menu hambúrguer abaixo de 900px, grid de 1 coluna,
-  sem scroll horizontal em nenhum breakpoint testado (390px, 768px,
-  1280px).
+  sem scroll horizontal em nenhum breakpoint testado (320px, 360px,
+  390px, 768px, 1280px).
 
-## Bug real encontrado no processo
+## Bugs reais encontrados no processo
 
 O botão "Calcular BTUs" tinha um resultado que **aparecia mesmo antes de
 clicar** — o elemento usava o atributo HTML `hidden`, mas uma regra CSS
@@ -81,6 +82,22 @@ mobile, os itens do grid (e os dois `<input>` lado a lado dentro dele)
 mantinham a largura mínima de conteúdo (`min-width: auto` padrão do
 navegador), maior que o espaço disponível. Corrigido com `min-width: 0`
 explícito nos itens do grid.
+
+Dois achados numa revisão geral, depois de publicado:
+
+- **A calculadora recomendava um aparelho menor que o necessário em
+  ambientes grandes.** O maior aparelho da tabela é de 60.000 BTUs, e
+  qualquer cálculo acima disso caía silenciosamente nele — um salão de
+  200 m², que pede ~120.000 BTUs, recebia "60.000 BTUs", metade do
+  necessário. Agora mostra "Acima de 60.000 BTUs" e explica que o caso
+  pede mais de um aparelho ou sistema central.
+- **O botão "Pedir esse orçamento no WhatsApp" vazava pra fora do card
+  de resultado** (estava visível até no screenshot deste README) e, em
+  telas de 360px — largura muito comum em celular Android —, criava
+  rolagem horizontal na página inteira. O teste original só cobria
+  390px pra cima. Causa: `white-space: nowrap` em todos os botões;
+  corrigido deixando esse botão quebrar linha, e os testes passaram a
+  incluir 320px e 360px.
 
 ## Estrutura
 

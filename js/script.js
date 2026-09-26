@@ -33,11 +33,13 @@
   // ---- calculadora de BTUs ----
   var TIERS = [7000, 9000, 12000, 18000, 21000, 24000, 30000, 36000, 48000, 60000];
 
+  // null = acima do maior aparelho: devolver o maior tier aqui recomendaria
+  // um aparelho menor que o necessário (ex.: 200 m² pede ~120.000 BTUs).
   function tierAcima(valor) {
     for (var i = 0; i < TIERS.length; i++) {
       if (TIERS[i] >= valor) return TIERS[i];
     }
-    return TIERS[TIERS.length - 1];
+    return null;
   }
 
   var form = document.getElementById("calc-form");
@@ -57,18 +59,21 @@
       if (sol) base *= 1.15;
 
       var recomendado = tierAcima(base);
+      var textoRecomendacao = recomendado
+        ? recomendado.toLocaleString("pt-BR") + " BTUs"
+        : "Acima de " + TIERS[TIERS.length - 1].toLocaleString("pt-BR") + " BTUs";
 
       var resultBox = document.getElementById("calc-result");
       var resultValue = document.getElementById("calc-value");
-      resultValue.textContent = recomendado.toLocaleString("pt-BR") + " BTUs";
+      resultValue.textContent = textoRecomendacao;
+      document.getElementById("calc-note").hidden = !!recomendado;
       resultBox.hidden = false;
 
       var msg =
         "Olá! Usei a calculadora do site: ambiente de " + area +
         " m², " + pessoas + " pessoa(s)" +
         (sol ? ", com sol direto" : "") +
-        ". Recomendação: " + recomendado.toLocaleString("pt-BR") +
-        " BTUs. Quero um orçamento.";
+        ". Recomendação: " + textoRecomendacao + ". Quero um orçamento.";
       document.getElementById("cta-calc").href = linkWhats(msg);
     });
   }
